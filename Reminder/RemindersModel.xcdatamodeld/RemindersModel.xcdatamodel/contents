@@ -3,5 +3,12 @@
     <entity name="MyList" representedClassName="MyList" syncable="YES">
         <attribute name="color" attributeType="Transformable" valueTransformerName="NSColorTransformer" customClassName="NSColor"/>
         <attribute name="name" attributeType="String"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MyListItem" inverseName="myList" inverseEntity="MyListItem"/>
+    </entity>
+    <entity name="MyListItem" representedClassName="MyListItem" syncable="YES" codeGenerationType="class">
+        <attribute name="dueDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isCompleted" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="myList" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MyList" inverseName="items" inverseEntity="MyList"/>
     </entity>
 </model>

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SideBarView: View {
     
-    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.managedObjectContext) private var context
     
     @State private var isPresented = false
     
@@ -17,9 +17,7 @@ struct SideBarView: View {
         VStack(alignment: .leading) {
             Text("All Items Count 10")
             
-            List(1...5, id: \.self) { index in
-                Text("List: \(index)")
-            }
+            MyListsView(vm: MyListsViewModel(context: self.context))
             
             Spacer()
             
@@ -33,7 +31,7 @@ struct SideBarView: View {
             }
             .sheet(isPresented: self.$isPresented, content: {
                 AddNewListView(vm: AddNewListViewModel(
-                    context: self.viewContext))
+                    context: self.context))
             })
             .buttonStyle(.plain)
             .padding()

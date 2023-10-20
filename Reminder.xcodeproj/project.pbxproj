@@ -21,6 +21,9 @@
 		C467C02C2AE23DCC00A6E125 /* ColorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C02B2AE23DCC00A6E125 /* ColorListView.swift */; };
 		C467C02F2AE23E2800A6E125 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C02E2AE23E2800A6E125 /* Constants.swift */; };
 		C467C0332AE2430100A6E125 /* NSColorTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C0322AE2430100A6E125 /* NSColorTransformer.swift */; };
+		C467C0362AE244E600A6E125 /* MyListsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C0352AE244E600A6E125 /* MyListsViewModel.swift */; };
+		C467C0382AE245F600A6E125 /* MyListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C0372AE245F600A6E125 /* MyListViewModel.swift */; };
+		C467C03A2AE2473700A6E125 /* MyListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C0392AE2473700A6E125 /* MyListsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +47,11 @@
 		C467C0312AE240E900A6E125 /* transformer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = transformer.png; sourceTree = "<group>"; };
 		C467C0322AE2430100A6E125 /* NSColorTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColorTransformer.swift; sourceTree = "<group>"; };
 		C467C0342AE2442500A6E125 /* register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register.png; sourceTree = "<group>"; };
+		C467C0352AE244E600A6E125 /* MyListsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListsViewModel.swift; sourceTree = "<group>"; };
+		C467C0372AE245F600A6E125 /* MyListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListViewModel.swift; sourceTree = "<group>"; };
+		C467C0392AE2473700A6E125 /* MyListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListsView.swift; sourceTree = "<group>"; };
+		C467C03B2AE24C8F00A6E125 /* children.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = children.png; sourceTree = "<group>"; };
+		C467C03C2AE24C8F00A6E125 /* parent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = parent.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +68,8 @@
 		C467BFF72AE2381D00A6E125 = {
 			isa = PBXGroup;
 			children = (
+				C467C03B2AE24C8F00A6E125 /* children.png */,
+				C467C03C2AE24C8F00A6E125 /* parent.png */,
 				C467C0202AE23AF200A6E125 /* define_manually.png */,
 				C467C0312AE240E900A6E125 /* transformer.png */,
 				C467C0342AE2442500A6E125 /* register.png */,
@@ -116,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				C467C0182AE2390600A6E125 /* SideBarView.swift */,
+				C467C0392AE2473700A6E125 /* MyListsView.swift */,
 				C467C0292AE23D2300A6E125 /* AddNewListView.swift */,
 				C467C02B2AE23DCC00A6E125 /* ColorListView.swift */,
 			);
@@ -143,6 +154,8 @@
 			isa = PBXGroup;
 			children = (
 				C467C0252AE23BF300A6E125 /* AddNewListViewModel.swift */,
+				C467C0352AE244E600A6E125 /* MyListsViewModel.swift */,
+				C467C0372AE245F600A6E125 /* MyListViewModel.swift */,
 			);
 			path = viewmodels;
 			sourceTree = "<group>";
@@ -233,7 +246,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C467C0362AE244E600A6E125 /* MyListsViewModel.swift in Sources */,
 				C467C0232AE23B4D00A6E125 /* CoreDataManager.swift in Sources */,
+				C467C0382AE245F600A6E125 /* MyListViewModel.swift in Sources */,
 				C467C02F2AE23E2800A6E125 /* Constants.swift in Sources */,
 				C467C0262AE23BF300A6E125 /* AddNewListViewModel.swift in Sources */,
 				C467C0192AE2390600A6E125 /* SideBarView.swift in Sources */,
@@ -242,6 +257,7 @@
 				C467C01C2AE2399600A6E125 /* RemindersModel.xcdatamodeld in Sources */,
 				C467C0042AE2381D00A6E125 /* ReminderApp.swift in Sources */,
 				C467C0142AE2386400A6E125 /* HomeScreen.swift in Sources */,
+				C467C03A2AE2473700A6E125 /* MyListsView.swift in Sources */,
 				C467C0282AE23C8C00A6E125 /* BaseModel.swift in Sources */,
 				C467C0332AE2430100A6E125 /* NSColorTransformer.swift in Sources */,
 				C467C01F2AE23A5A00A6E125 /* MyList.swift in Sources */,

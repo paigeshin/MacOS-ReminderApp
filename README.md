@@ -152,3 +152,70 @@ struct SideBarView: View {
     } //: body
 }
 ``` 
+
+### ContextMenu for right click Options 
+
+```swift
+    .contextMenu(ContextMenu(menuItems: {
+        Button {
+            self.vm.delete(myList)
+        } label: {
+            Label("Delete", systemImage: "trash")
+        }
+
+    }))
+```
+
+### Define One To Many Relationship 
+
+1) Create Relationship on Parent 
+
+![image](./parent.png)
+
+- Define Destination 
+- Define Delete Rule 
+    - Cascase means when parent is deleted, all the related items are deleted as well.
+- Define Type. "to Many" 
+
+2) Create Relationship on Children 
+
+![image](./children.png)
+
+- Define Destination
+- Define Type. "to One"
+
+3) If you created CoreData class by yourself, then you must add children manually.
+
+```swift
+    @NSManaged public var items: NSSet?
+```
+
+```swfit
+ @objc(MyList)
+public class MyList: NSManagedObject, BaseModel {
+    
+    static var all: NSFetchRequest<MyList> {
+        let request: NSFetchRequest<MyList> = MyList.fetchRequest()
+        request.sortDescriptors = []
+        return request
+    }
+    
+}
+
+extension MyList {
+
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<MyList> {
+        return NSFetchRequest<MyList>(entityName: "MyList")
+    }
+
+    @NSManaged public var color: NSColor?
+    @NSManaged public var name: String?
+    @NSManaged public var items: NSSet?
+
+}
+
+extension MyList : Identifiable {
+
+}
+
+```
