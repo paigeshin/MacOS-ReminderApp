@@ -25,7 +25,38 @@ final class MyListsViewModel: NSObject, ObservableObject {
         )
         super.init()
         self.fetchedResultsController.delegate = self
+        self.setupObservsers()
         self.fetchAll()
+    }
+    
+    private func setupObservsers() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(
+            self,
+            selector: #selector(self.managedOjbectContextDidChange),
+            name: .NSManagedObjectContextObjectsDidChange,
+            object: self.context
+        )
+    }
+    
+    @objc
+    private func managedOjbectContextDidChange(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+        guard let updates = userInfo[NSUpdatedObjectsKey] as? Set<MyListItem>, updates.count > 0 else { return }
+        self.fetchAll()
+    }
+    
+    func saveTo(list: MyListViewModel, title: String, dueDate: Date?) {
+        let myListItem = MyListItem(context: self.context)
+        myListItem.title = title
+        myListItem.dueDate = dueDate
+        myListItem.myList = MyList.byId(id: list.id)
+        try? myListItem.save()
+    }
+    
+    func deleteItem(_ item: MyListItemViewModel) {
+        guard let myListItem: MyListItem = MyListItem.byId(id: item.listItemID) else { return }
+        try? myListItem.delete()
     }
     
     func delete(_ myList: MyListViewModel) {
@@ -34,13 +65,9 @@ final class MyListsViewModel: NSObject, ObservableObject {
     }
     
     private func fetchAll() {
-        do {
-            try self.fetchedResultsController.performFetch()
-            guard let myLists = self.fetchedResultsController.fetchedObjects else { return }
-            self.myLists = myLists.map(MyListViewModel.init)
-        } catch {
-            print(error)
-        }
+        try? self.fetchedResultsController.performFetch()
+        guard let myLists = self.fetchedResultsController.fetchedObjects else { return }
+        self.myLists = myLists.map(MyListViewModel.init)
     }
     
 }

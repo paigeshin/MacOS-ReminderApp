@@ -20,5 +20,12 @@ struct MyListViewModel: Identifiable {
     var id: NSManagedObjectID { self.myList.objectID }
     var name: String { self.myList.name ?? "" }
     var color: Color { Color(self.myList.color ?? .clear) }
-    
+    var itemsCount: Int { self.items.count }
+    var items: [MyListItemViewModel] {
+        guard
+            let items = self.myList.items,
+            let myItems = (items.allObjects as? [MyListItem])
+        else { return [] }
+        return myItems.filter { !$0.isCompleted }.map(MyListItemViewModel.init)
+    }
 }

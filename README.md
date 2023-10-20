@@ -322,3 +322,178 @@ struct MyListsView: View {
 => Here in Navigation Link, it shows MainView.. 
 
 SideBar NavigationLink => Renders Main, in two column layout 
+
+
+### MacOS DropDown And PopOver 
+
+```swift
+enum DueDate {
+    case today
+    case tomorrow
+    case yesterday
+    case custom(Date)
+}
+
+extension DueDate {
+    
+    var value: Date {
+        switch self {
+        case .today: return Date.today
+        case .tomorrow: return Date.tomorrow
+        case .yesterday: return Date.yesterday
+        case .custom(let date): return date
+        }
+    }
+    
+    var title: String {
+        switch self {
+        case .today: return "Today"
+        case .tomorrow: return "Tomorrow"
+        case .yesterday: return "Yesterday"
+        case .custom(let date): return date.formatAsString
+        }
+    }
+    
+    var isPastDue: Bool { self.value < Date() }
+    
+    static func from(value: Date) -> DueDate {
+        let calendar = NSCalendar(identifier: .gregorian)!
+        if calendar.isDateInToday(value) {
+            return DueDate.today
+        } else if calendar.isDateInTomorrow(value) {
+            return DueDate.today
+        } else if calendar.isDateInYesterday(value) {
+            return DueDate.yesterday
+        } else {
+            return DueDate.custom(value)
+        }
+    }
+    
+}
+
+extension Date {
+    
+    static var today: Date { Date() }
+    static var yesterday: Date { Calendar(identifier: .gregorian).date(byAdding: .day, value: -1, to: self.today)! }
+    static var tomorrow: Date { Calendar(identifier: .gregorian).date(byAdding: .day, value: 1, to: self.today)! }
+    var formatAsString: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/yyyy"
+        return formatter.string(from: self)
+    }
+    
+}
+
+
+struct DueDateSelectionView: View {
+    
+    @Binding var dueDate: DueDate?
+    @State private var selectedDate = Date.today
+    @State private var showCalendar = false
+    
+    var body: some View {
+        Menu {
+            Button {
+                self.dueDate = .today
+            } label: {
+                VStack {
+                    Text("Today \n \(Date.today.formatAsString)")
+                } //: VStack
+            }
+            
+            Button {
+                self.dueDate = .tomorrow
+            } label: {
+                VStack {
+                    Text("Tomorrow \n \(Date.today.formatAsString)")
+                } //: VStack
+            }
+            
+            Button {
+                self.showCalendar.toggle()
+            } label: {
+                VStack {
+                    Text("Custom")
+                } //: VStack
+            }
+            
+        } label: {
+            let title = self.dueDate == nil ? "Add Date:" : self.dueDate!.title
+            Label(title, systemImage: "calendar")
+        } //: Menu
+        .menuStyle(.borderedButton)
+        .fixedSize()
+        .popover(isPresented: self.$showCalendar, content: {
+            DatePicker("Custom",
+                       selection: self.$selectedDate,
+                       displayedComponents: .date)
+            .labelsHidden()
+            .datePickerStyle(.graphical)
+            .onChange(of: self.selectedDate, { _, newValue in
+                self.dueDate = .custom(newValue)
+                self.showCalendar = false
+            })
+        })
+    } //: body
+}
+```
+
+### MacOS onHover 
+
+```swift
+        .onHover(perform: { hovering in
+            self.active = hovering
+        })
+```
+
+```swift
+struct ListItemCell: View {
+    
+    @State private var active = false
+    let item: MyListItemViewModel
+    
+    var body: some View {
+        HStack(alignment: .firstTextBaseline) {
+            Image(systemName: Constants.Icons.circle)
+                .font(.system(size: 14))
+                .opacity(0.2)
+            
+            VStack(alignment: .leading) {
+                Text(self.item.title)
+                if let dueDate = self.item.dueDate {
+                    Text(dueDate.title)
+                        .opacity(0.4)
+                        .foregroundStyle(dueDate.isPastDue ? .red : .primary)
+                }
+            } //: VStack
+            
+            Spacer()
+            
+            if self.active {
+                Image(systemName: "multiply.circle")
+                    .foregroundStyle(.red)
+                Image(systemName: Constants.Icons.exclaimationMarkCircle)
+                    .foregroundStyle(.purple)
+            }
+            
+        } //: HStack
+        .contentShape(Rectangle())
+        .onHover(perform: { hovering in
+            self.active = hovering
+        })
+    } //: body
+} //: ListItemCell
+```
+
+### MacOS PopOver
+
+```swift
+    Image(systemName: Constants.Icons.exclaimationMarkCircle)
+        .foregroundStyle(.purple)
+        .onTapGesture {
+            self.showPopOver.toggle()
+        }
+        .popover(isPresented: self.$showPopOver, arrowEdge: .leading, content: {
+            Text("Hello World")
+        })
+```

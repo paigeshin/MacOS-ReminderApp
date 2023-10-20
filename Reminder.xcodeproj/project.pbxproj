@@ -28,6 +28,13 @@
 		C467C0432AE2559800A6E125 /* MyListItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C0422AE2559800A6E125 /* MyListItemsView.swift */; };
 		C467C0452AE2561200A6E125 /* MyListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C0442AE2561200A6E125 /* MyListItemViewModel.swift */; };
 		C467C0472AE2567D00A6E125 /* DueDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C0462AE2567D00A6E125 /* DueDate.swift */; };
+		C467C0492AE259AA00A6E125 /* AddNewListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C0482AE259AA00A6E125 /* AddNewListItemView.swift */; };
+		C467C04C2AE25A5B00A6E125 /* DueDateSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C04B2AE25A5B00A6E125 /* DueDateSelectionView.swift */; };
+		C467C04E2AE25E6A00A6E125 /* MyListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C04D2AE25E6A00A6E125 /* MyListItem.swift */; };
+		C467C0502AE260B300A6E125 /* ListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C04F2AE260B300A6E125 /* ListItemCell.swift */; };
+		C467C0532AE2657100A6E125 /* EditListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C0522AE2657100A6E125 /* EditListItemView.swift */; };
+		C467C0552AE265F000A6E125 /* EditListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C0542AE265F000A6E125 /* EditListItemViewModel.swift */; };
+		C467C0572AE266BC00A6E125 /* CalendarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C0562AE266BC00A6E125 /* CalendarButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +67,13 @@
 		C467C0422AE2559800A6E125 /* MyListItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListItemsView.swift; sourceTree = "<group>"; };
 		C467C0442AE2561200A6E125 /* MyListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListItemViewModel.swift; sourceTree = "<group>"; };
 		C467C0462AE2567D00A6E125 /* DueDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DueDate.swift; sourceTree = "<group>"; };
+		C467C0482AE259AA00A6E125 /* AddNewListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewListItemView.swift; sourceTree = "<group>"; };
+		C467C04B2AE25A5B00A6E125 /* DueDateSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DueDateSelectionView.swift; sourceTree = "<group>"; };
+		C467C04D2AE25E6A00A6E125 /* MyListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListItem.swift; sourceTree = "<group>"; };
+		C467C04F2AE260B300A6E125 /* ListItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemCell.swift; sourceTree = "<group>"; };
+		C467C0522AE2657100A6E125 /* EditListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditListItemView.swift; sourceTree = "<group>"; };
+		C467C0542AE265F000A6E125 /* EditListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditListItemViewModel.swift; sourceTree = "<group>"; };
+		C467C0562AE266BC00A6E125 /* CalendarButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +160,7 @@
 				C467C0272AE23C8C00A6E125 /* BaseModel.swift */,
 				C467C01E2AE23A5A00A6E125 /* MyList.swift */,
 				C467C0462AE2567D00A6E125 /* DueDate.swift */,
+				C467C04D2AE25E6A00A6E125 /* MyListItem.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -165,6 +180,7 @@
 				C467C0352AE244E600A6E125 /* MyListsViewModel.swift */,
 				C467C0372AE245F600A6E125 /* MyListViewModel.swift */,
 				C467C0442AE2561200A6E125 /* MyListItemViewModel.swift */,
+				C467C0542AE265F000A6E125 /* EditListItemViewModel.swift */,
 			);
 			path = viewmodels;
 			sourceTree = "<group>";
@@ -206,10 +222,23 @@
 		C467C0412AE2554000A6E125 /* main */ = {
 			isa = PBXGroup;
 			children = (
+				C467C0512AE2656900A6E125 /* modal */,
 				C467C03D2AE254BB00A6E125 /* MyListItemsHeaderView.swift */,
 				C467C0422AE2559800A6E125 /* MyListItemsView.swift */,
+				C467C0482AE259AA00A6E125 /* AddNewListItemView.swift */,
+				C467C04B2AE25A5B00A6E125 /* DueDateSelectionView.swift */,
+				C467C04F2AE260B300A6E125 /* ListItemCell.swift */,
 			);
 			path = main;
+			sourceTree = "<group>";
+		};
+		C467C0512AE2656900A6E125 /* modal */ = {
+			isa = PBXGroup;
+			children = (
+				C467C0522AE2657100A6E125 /* EditListItemView.swift */,
+				C467C0562AE266BC00A6E125 /* CalendarButtonView.swift */,
+			);
+			path = modal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,6 +312,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C467C0362AE244E600A6E125 /* MyListsViewModel.swift in Sources */,
+				C467C0552AE265F000A6E125 /* EditListItemViewModel.swift in Sources */,
+				C467C0502AE260B300A6E125 /* ListItemCell.swift in Sources */,
 				C467C0232AE23B4D00A6E125 /* CoreDataManager.swift in Sources */,
 				C467C0382AE245F600A6E125 /* MyListViewModel.swift in Sources */,
 				C467C0452AE2561200A6E125 /* MyListItemViewModel.swift in Sources */,
@@ -290,16 +321,21 @@
 				C467C0262AE23BF300A6E125 /* AddNewListViewModel.swift in Sources */,
 				C467C0192AE2390600A6E125 /* SideBarView.swift in Sources */,
 				C467C02A2AE23D2300A6E125 /* AddNewListView.swift in Sources */,
+				C467C0492AE259AA00A6E125 /* AddNewListItemView.swift in Sources */,
 				C467C03E2AE254BB00A6E125 /* MyListItemsHeaderView.swift in Sources */,
 				C467C02C2AE23DCC00A6E125 /* ColorListView.swift in Sources */,
 				C467C01C2AE2399600A6E125 /* RemindersModel.xcdatamodeld in Sources */,
+				C467C0532AE2657100A6E125 /* EditListItemView.swift in Sources */,
+				C467C04E2AE25E6A00A6E125 /* MyListItem.swift in Sources */,
 				C467C0042AE2381D00A6E125 /* ReminderApp.swift in Sources */,
 				C467C0142AE2386400A6E125 /* HomeScreen.swift in Sources */,
 				C467C0472AE2567D00A6E125 /* DueDate.swift in Sources */,
+				C467C04C2AE25A5B00A6E125 /* DueDateSelectionView.swift in Sources */,
 				C467C03A2AE2473700A6E125 /* MyListsView.swift in Sources */,
 				C467C0282AE23C8C00A6E125 /* BaseModel.swift in Sources */,
 				C467C0432AE2559800A6E125 /* MyListItemsView.swift in Sources */,
 				C467C0332AE2430100A6E125 /* NSColorTransformer.swift in Sources */,
+				C467C0572AE266BC00A6E125 /* CalendarButtonView.swift in Sources */,
 				C467C01F2AE23A5A00A6E125 /* MyList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

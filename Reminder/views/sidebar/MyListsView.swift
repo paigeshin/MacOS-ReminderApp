@@ -27,7 +27,18 @@ struct MyListsView: View {
                             count: 6,
                             color: myList.color
                         )
-                        MyListItemsView()
+                        MyListItemsView(
+                            items: myList.items,
+                            onItemAdded: { title, dueDate in
+                                self.vm.saveTo(
+                                    list: myList,
+                                    title: title,
+                                    dueDate: dueDate
+                                )
+                            }, 
+                            onItemDeleted: { item in
+                                self.vm.deleteItem(item)
+                            })
                     } label: {
                         HStack {
                             let systemName = Constants.Icons.line3HorizontalCircleFill

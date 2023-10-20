@@ -51,7 +51,7 @@ extension DueDate {
     
 }
 
-fileprivate extension Date {
+extension Date {
     
     static var today: Date { Date() }
     static var yesterday: Date { Calendar(identifier: .gregorian).date(byAdding: .day, value: -1, to: self.today)! }
