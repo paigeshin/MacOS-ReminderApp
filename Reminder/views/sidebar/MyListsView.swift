@@ -18,13 +18,14 @@ struct MyListsView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             List {
+                AllCountView(count: self.vm.allListItemesCount)
                 Text("My Lists")
                 ForEach(self.vm.myLists) { myList in
                     
                     NavigationLink {
                         MyListItemsHeaderView(
                             name: myList.name,
-                            count: 6,
+                            count: myList.itemsCount,
                             color: myList.color
                         )
                         MyListItemsView(
@@ -49,6 +50,8 @@ struct MyListsView: View {
                                 .font(.title)
                                 .foregroundStyle(myList.color)
                             Text(myList.name)
+                            Spacer()
+                            Text("\(myList.itemsCount)")
                         } //: HStack
                     } //: NavigationLink
                     .contextMenu(ContextMenu(menuItems: {
