@@ -53,10 +53,16 @@ final class MyListsViewModel: NSObject, ObservableObject {
         myListItem.myList = MyList.byId(id: list.id)
         try? myListItem.save()
     }
-    
+
     func deleteItem(_ item: MyListItemViewModel) {
         guard let myListItem: MyListItem = MyListItem.byId(id: item.listItemID) else { return }
         try? myListItem.delete()
+    }
+    
+    func markAsCompleted(_ item: MyListItemViewModel) {
+        guard let myListItem: MyListItem = MyListItem.byId(id: item.listItemID) else { return }
+        myListItem.isCompleted = true
+        try? myListItem.save()
     }
     
     func delete(_ myList: MyListViewModel) {

@@ -38,6 +38,9 @@ struct MyListsView: View {
                             }, 
                             onItemDeleted: { item in
                                 self.vm.deleteItem(item)
+                            },
+                            onItemCompleted: { item in
+                                self.vm.markAsCompleted(item)
                             })
                     } label: {
                         HStack {

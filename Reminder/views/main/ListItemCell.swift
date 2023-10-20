@@ -11,16 +11,31 @@ struct ListItemCell: View {
     
     @State private var active = false
     @State private var showPopOver = false
+    @State private var checked = false
     
     let item: MyListItemViewModel
     
     var onListItemDeleted: (MyListItemViewModel) -> Void = { _ in }
+    var onListItemCompleted: (MyListItemViewModel) -> Void = { _ in }
+    
+    private let delay = Delay()
     
     var body: some View {
         HStack(alignment: .firstTextBaseline) {
-            Image(systemName: Constants.Icons.circle)
+            let systemName = self.checked ? Constants.Icons.circleInsetFilled : Constants.Icons.circle
+            Image(systemName: systemName)
                 .font(.system(size: 14))
                 .opacity(0.2)
+                .onTapGesture {
+                    self.checked.toggle()
+                    if self.checked {
+                        self.delay.performWork {
+                            self.onListItemCompleted(self.item)
+                        }
+                    } else {
+                        self.delay.cancel()
+                    }
+                }
             
             VStack(alignment: .leading) {
                 Text(self.item.title)

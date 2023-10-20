@@ -497,3 +497,67 @@ struct ListItemCell: View {
             Text("Hello World")
         })
 ```
+
+### Observe App Events 
+
+```swift
+
+    private func setupObservsers() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(
+            self,
+            selector: #selector(self.managedOjbectContextDidChange),
+            name: .NSManagedObjectContextObjectsDidChange,
+            object: self.context
+        )
+    }
+    
+    @objc
+    private func managedOjbectContextDidChange(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+        guard let updates = userInfo[NSUpdatedObjectsKey] as? Set<MyListItem>, updates.count > 0 else { return }
+        self.fetchAll()
+    }
+
+```
+
+### Delay Util
+
+```swift
+import Foundation
+
+final class Delay {
+    
+    private var seconds: Double
+    
+    init(_ seconds: Double = 2) {
+        self.seconds = seconds
+    }
+    
+    var workItem: DispatchWorkItem?
+    
+    func performWork(_ work: @escaping() -> Void) {
+        self.workItem = DispatchWorkItem(block: work)
+        DispatchQueue.main.asyncAfter(deadline: .now() + self.seconds, execute: self.workItem!)
+    }
+    
+    func cancel() {
+        self.workItem?.cancel()
+    }
+    
+}
+
+```
+
+```swift
+let delay = Delay() 
+
+if someCondition {
+    delay.performWork {
+        self.onListItemDeleted(self.item)
+    }
+} else {
+    delay.cancel() 
+}
+
+```

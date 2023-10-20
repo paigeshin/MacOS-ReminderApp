@@ -35,6 +35,7 @@
 		C467C0532AE2657100A6E125 /* EditListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C0522AE2657100A6E125 /* EditListItemView.swift */; };
 		C467C0552AE265F000A6E125 /* EditListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C0542AE265F000A6E125 /* EditListItemViewModel.swift */; };
 		C467C0572AE266BC00A6E125 /* CalendarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C0562AE266BC00A6E125 /* CalendarButtonView.swift */; };
+		C467C0592AE26F0600A6E125 /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C0582AE26F0600A6E125 /* Delay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		C467C0522AE2657100A6E125 /* EditListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditListItemView.swift; sourceTree = "<group>"; };
 		C467C0542AE265F000A6E125 /* EditListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditListItemViewModel.swift; sourceTree = "<group>"; };
 		C467C0562AE266BC00A6E125 /* CalendarButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarButtonView.swift; sourceTree = "<group>"; };
+		C467C0582AE26F0600A6E125 /* Delay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				C467C02E2AE23E2800A6E125 /* Constants.swift */,
+				C467C0582AE26F0600A6E125 /* Delay.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				C467C0232AE23B4D00A6E125 /* CoreDataManager.swift in Sources */,
 				C467C0382AE245F600A6E125 /* MyListViewModel.swift in Sources */,
 				C467C0452AE2561200A6E125 /* MyListItemViewModel.swift in Sources */,
+				C467C0592AE26F0600A6E125 /* Delay.swift in Sources */,
 				C467C02F2AE23E2800A6E125 /* Constants.swift in Sources */,
 				C467C0262AE23BF300A6E125 /* AddNewListViewModel.swift in Sources */,
 				C467C0192AE2390600A6E125 /* SideBarView.swift in Sources */,
