@@ -24,6 +24,10 @@
 		C467C0362AE244E600A6E125 /* MyListsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C0352AE244E600A6E125 /* MyListsViewModel.swift */; };
 		C467C0382AE245F600A6E125 /* MyListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C0372AE245F600A6E125 /* MyListViewModel.swift */; };
 		C467C03A2AE2473700A6E125 /* MyListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C0392AE2473700A6E125 /* MyListsView.swift */; };
+		C467C03E2AE254BB00A6E125 /* MyListItemsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C03D2AE254BB00A6E125 /* MyListItemsHeaderView.swift */; };
+		C467C0432AE2559800A6E125 /* MyListItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C0422AE2559800A6E125 /* MyListItemsView.swift */; };
+		C467C0452AE2561200A6E125 /* MyListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C0442AE2561200A6E125 /* MyListItemViewModel.swift */; };
+		C467C0472AE2567D00A6E125 /* DueDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C0462AE2567D00A6E125 /* DueDate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +56,10 @@
 		C467C0392AE2473700A6E125 /* MyListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListsView.swift; sourceTree = "<group>"; };
 		C467C03B2AE24C8F00A6E125 /* children.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = children.png; sourceTree = "<group>"; };
 		C467C03C2AE24C8F00A6E125 /* parent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = parent.png; sourceTree = "<group>"; };
+		C467C03D2AE254BB00A6E125 /* MyListItemsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListItemsHeaderView.swift; sourceTree = "<group>"; };
+		C467C0422AE2559800A6E125 /* MyListItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListItemsView.swift; sourceTree = "<group>"; };
+		C467C0442AE2561200A6E125 /* MyListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListItemViewModel.swift; sourceTree = "<group>"; };
+		C467C0462AE2567D00A6E125 /* DueDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DueDate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,10 +133,9 @@
 		C467C0172AE238F700A6E125 /* views */ = {
 			isa = PBXGroup;
 			children = (
-				C467C0182AE2390600A6E125 /* SideBarView.swift */,
-				C467C0392AE2473700A6E125 /* MyListsView.swift */,
-				C467C0292AE23D2300A6E125 /* AddNewListView.swift */,
-				C467C02B2AE23DCC00A6E125 /* ColorListView.swift */,
+				C467C03F2AE2553000A6E125 /* sidebar */,
+				C467C0412AE2554000A6E125 /* main */,
+				C467C0402AE2553900A6E125 /* modal */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -138,6 +145,7 @@
 			children = (
 				C467C0272AE23C8C00A6E125 /* BaseModel.swift */,
 				C467C01E2AE23A5A00A6E125 /* MyList.swift */,
+				C467C0462AE2567D00A6E125 /* DueDate.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -156,6 +164,7 @@
 				C467C0252AE23BF300A6E125 /* AddNewListViewModel.swift */,
 				C467C0352AE244E600A6E125 /* MyListsViewModel.swift */,
 				C467C0372AE245F600A6E125 /* MyListViewModel.swift */,
+				C467C0442AE2561200A6E125 /* MyListItemViewModel.swift */,
 			);
 			path = viewmodels;
 			sourceTree = "<group>";
@@ -174,6 +183,33 @@
 				C467C0322AE2430100A6E125 /* NSColorTransformer.swift */,
 			);
 			path = transformers;
+			sourceTree = "<group>";
+		};
+		C467C03F2AE2553000A6E125 /* sidebar */ = {
+			isa = PBXGroup;
+			children = (
+				C467C0182AE2390600A6E125 /* SideBarView.swift */,
+				C467C0392AE2473700A6E125 /* MyListsView.swift */,
+			);
+			path = sidebar;
+			sourceTree = "<group>";
+		};
+		C467C0402AE2553900A6E125 /* modal */ = {
+			isa = PBXGroup;
+			children = (
+				C467C0292AE23D2300A6E125 /* AddNewListView.swift */,
+				C467C02B2AE23DCC00A6E125 /* ColorListView.swift */,
+			);
+			path = modal;
+			sourceTree = "<group>";
+		};
+		C467C0412AE2554000A6E125 /* main */ = {
+			isa = PBXGroup;
+			children = (
+				C467C03D2AE254BB00A6E125 /* MyListItemsHeaderView.swift */,
+				C467C0422AE2559800A6E125 /* MyListItemsView.swift */,
+			);
+			path = main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,16 +285,20 @@
 				C467C0362AE244E600A6E125 /* MyListsViewModel.swift in Sources */,
 				C467C0232AE23B4D00A6E125 /* CoreDataManager.swift in Sources */,
 				C467C0382AE245F600A6E125 /* MyListViewModel.swift in Sources */,
+				C467C0452AE2561200A6E125 /* MyListItemViewModel.swift in Sources */,
 				C467C02F2AE23E2800A6E125 /* Constants.swift in Sources */,
 				C467C0262AE23BF300A6E125 /* AddNewListViewModel.swift in Sources */,
 				C467C0192AE2390600A6E125 /* SideBarView.swift in Sources */,
 				C467C02A2AE23D2300A6E125 /* AddNewListView.swift in Sources */,
+				C467C03E2AE254BB00A6E125 /* MyListItemsHeaderView.swift in Sources */,
 				C467C02C2AE23DCC00A6E125 /* ColorListView.swift in Sources */,
 				C467C01C2AE2399600A6E125 /* RemindersModel.xcdatamodeld in Sources */,
 				C467C0042AE2381D00A6E125 /* ReminderApp.swift in Sources */,
 				C467C0142AE2386400A6E125 /* HomeScreen.swift in Sources */,
+				C467C0472AE2567D00A6E125 /* DueDate.swift in Sources */,
 				C467C03A2AE2473700A6E125 /* MyListsView.swift in Sources */,
 				C467C0282AE23C8C00A6E125 /* BaseModel.swift in Sources */,
+				C467C0432AE2559800A6E125 /* MyListItemsView.swift in Sources */,
 				C467C0332AE2430100A6E125 /* NSColorTransformer.swift in Sources */,
 				C467C01F2AE23A5A00A6E125 /* MyList.swift in Sources */,
 			);

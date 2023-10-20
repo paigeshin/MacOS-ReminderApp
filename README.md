@@ -219,3 +219,106 @@ extension MyList : Identifiable {
 }
 
 ```
+
+### Two Column Layout Behavior 
+
+- NavigationView 
+
+```swift
+struct HomeScreen: View {
+    var body: some View {
+        NavigationView {
+            SideBarView()
+            Text("My List Item")
+        } //: NavigationView
+    } //: body
+}
+
+```
+
+- Sidebar 
+```swift
+import SwiftUI
+
+struct SideBarView: View {
+    
+    @Environment(\.managedObjectContext) private var context
+    
+    @State private var isPresented = false
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text("All Items Count 10")
+            
+            MyListsView(vm: MyListsViewModel(context: self.context))
+            
+            Spacer()
+            
+            Button {
+                self.isPresented.toggle()
+            } label: {
+                HStack {
+                    Image(systemName: Constants.Icons.plusCircle)
+                    Text("Add List")
+                } //: HStack
+            }
+            .sheet(isPresented: self.$isPresented, content: {
+                AddNewListView(vm: AddNewListViewModel(
+                    context: self.context))
+            })
+            .buttonStyle(.plain)
+            .padding()
+
+            
+        } //: VStack
+    } //: body
+}
+
+#Preview {
+    SideBarView()
+}
+
+```
+
+```swift
+struct MyListsView: View {
+    
+    @StateObject private var vm: MyListsViewModel
+    
+    init(vm: MyListsViewModel) {
+        self._vm = StateObject(wrappedValue: vm)
+    }
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            List {
+                Text("My Lists")
+                ForEach(self.vm.myLists) { myList in
+                    
+                    NavigationLink {
+                        Text("Destination")
+                    } label: {
+                        HStack {
+                            let systemName = Constants.Icons.line3HorizontalCircleFill
+                            Image(systemName: systemName)
+                                .font(.title)
+                                .foregroundStyle(myList.color)
+                            Text(myList.name)
+                        } //: HStack
+                    } //: NavigationLink
+                    .contextMenu(ContextMenu(menuItems: {
+                        Button {
+                            self.vm.delete(myList)
+                        } label: {
+                            Label("Delete", systemImage: "trash")
+                        }
+                    }))
+                } //: ForEach
+            } //: List
+        } //: VStack
+    }
+}
+```
+=> Here in Navigation Link, it shows MainView.. 
+
+SideBar NavigationLink => Renders Main, in two column layout 
